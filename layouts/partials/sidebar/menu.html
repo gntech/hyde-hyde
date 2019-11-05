@@ -1,27 +1,18 @@
+{{ $baseurl := .Site.BaseURL }}
+{{ $lang := .Site.LanguagePrefix }}
+
 <div>
 	<ul class="sidebar-nav">
-		{{ $currentPage := . }} 
-		{{ range .Site.Menus.main }} 
-			{{ if .HasChildren }}
-			<li {{ if $currentPage.HasMenuCurrent "main" . }}class="active"{{ end }}>
-				<a href="#">{{ .Pre }}
-					<span>{{ .Name }}</span>
-				</a>
-				<ul class="sidebar-nav">
-					{{ range .Children }}
-					<li {{ if $currentPage.IsMenuCurrent "main" . }}class="active"{{ end }}>
-						<a href="{{ .URL }}">{{ .Name | title }}</a>
-					</li>
-					{{ end }}
-				</ul>
-			</li>
-			{{ else }} <!-- No children -->
-				<li>
-					<a href="{{.URL}}">{{ .Pre }}
-						<span>{{ .Name | title }}</span>
-					</a>
-				</li>
-			{{ end }} 
-		{{ end }}
+		<li><a href="{{$baseurl}}{{$lang}}/about">{{ i18n "about" }}</a></li>
+		<li><a href="{{$baseurl}}{{$lang}}/projects">{{ i18n "projects" }}</a></li>
+		<li><a href="{{$baseurl}}{{$lang}}/music">{{ i18n "music" }}</a></li>
+		<li><a href="{{$baseurl}}{{$lang}}/drawings">{{ i18n "drawings" }}</a></li>
+		{{- if eq $lang "/sv"}}
+		<li><a href="{{$baseurl}}{{$lang}}/ramblings">{{ i18n "ramblings" }}</a></li>
+		{{end -}}
+		{{- if .IsTranslated}}{{- range .Translations -}}
+		<li><a href="{{ .Permalink }}">{{ i18n "language_switcher" }}</a></li>
+		{{ end -}}{{- end -}}
+		<li><a href="{{$baseurl}}{{$lang}}/index.xml">RSS</a></li>
 	</ul>
 </div>
