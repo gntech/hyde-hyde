@@ -5,9 +5,7 @@
       <span class="site__title">
         <a href="{{ .Site.BaseURL }}{{$.Site.LanguagePrefix}}">
         {{ with .Site.Params.logoimage }}
-        {{ $strippedSlash := ($.Site.Params.logoimage | replaceRE "^(/)+(.*)" "$2") }}
-        {{ $logoImage := (printf "%s%s" $.Site.BaseURL $strippedSlash) }}
-          <img src="{{$logoImage}}" alt="Logo Image" class="element--center">
+          <img src="{{.}}" alt="Logo Image" class="element--center">
         {{ else }}
           {{ .Site.Title }}
         {{ end }}
