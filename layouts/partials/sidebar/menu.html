@@ -5,11 +5,6 @@
 	<ul class="sidebar-nav">
 		<li><a href="{{$baseurl}}{{$lang}}/about">{{ i18n "about" }}</a></li>
 		<li><a href="{{$baseurl}}{{$lang}}/projects">{{ i18n "projects" }}</a></li>
-		<li><a href="{{$baseurl}}{{$lang}}/music">{{ i18n "music" }}</a></li>
-		<li><a href="{{$baseurl}}{{$lang}}/drawings">{{ i18n "drawings" }}</a></li>
-		{{- if eq $lang "/sv"}}
-		<li><a href="{{$baseurl}}{{$lang}}/ramblings">{{ i18n "ramblings" }}</a></li>
-		{{end -}}
 		{{- if .IsTranslated}}{{- range .Translations -}}
 		<li><a href="{{ .Permalink }}">{{ i18n "language_switcher" }}</a></li>
 		{{ end -}}{{- end -}}
